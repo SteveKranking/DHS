@@ -5,38 +5,31 @@ import org.xml.sax.*;
 
 public class ReadXMLFile {
   static public void main(String[] arg){
-  try {
+    
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setValidating(false);
+    factory.setNamespaceAware(true);
+    
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    
+    builder.setErrorHandler(new SimpleErrorHandler());
+    
+    Document document = builder.parse(new InputSource("question1.xml"));
+    //This process reads through the XML file listed, and checks if it is well-formed
+    }
 
-        String xmlFile = "question1.xml";
-        File file = new File(xmlFile);
-        
-        if(file.exists()){
-            try {
-            // Create a new factory to create parsers 
-                DocumentBuilderFactory dBF = 
-                DocumentBuilderFactory.newInstance();
-            // Use the factory to create a parser (builder) and use
-            // it to parse the document.
-                DocumentBuilder builder = dBF.newDocumentBuilder();
-            // builder.setErrorHandler(new MyErrorHandler());
-                InputSource is = new InputSource(xmlFile);
-                Document doc = builder.parse(is);
-                System.out.println(xmlFile + " is well-formed!");
-            }
-            catch (Exception e) {
-                System.out.println(xmlFile + " isn't well-formed!");
-                System.exit(1);
-            }
+    public class SimpleErrorHandler implements ErrorHandler {
+        public void warning(SAXParseException e) throws SAXException {
+            System.out.println(e.getMessage());
         }
-
-        else {
-            System.out.print("File not found!");
+    
+        public void error(SAXParseException e) throws SAXException {
+            System.out.println(e.getMessage());
+        }
+    
+        public void fatalError(SAXParseException e) throws SAXException {
+            System.out.println(e.getMessage());
         }
     }
-  
-    catch(IOException io) {
-        io.printStackTrace();
-    } 
-    
-  }
+    //if the XML is not well formed, it will pass an error
 }

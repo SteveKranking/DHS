@@ -1,31 +1,34 @@
+// import javax.servlet;
+// import javax.servlet.http.HttpSession;
+import java.util.*;
+
 public class UserKeyTest{
     public static void main(String[] args) {
-        UserKey b1 = new Userkey("Bill Smith", "BSMITH");
-        UserKey b2 = new Userkey("Bill Smith", "BSMITH");
-        UserKey b3 = new Userkey("Susan Smith", "SSMITH");
-        UserKey b4 = new Userkey(null, null);
+
+        // Httpsession s;
+        java.util.Hashtable ht = new java.util.Hashtable();
+
+        UserKey b1 = new UserKey("Bill Smith", "BSMITH");
+        // s.setAttribute(b1);
+        //This is how you would use session
+        
+        UserKey b2 = new UserKey("Bill Smith", "BSMITH");
+        
+        UserKey b3 = new UserKey("Susan Smith", "SSMITH");
+        
+        UserKey b4 = new UserKey(null, null);
 
         System.out.println( b1.equals(b1) );  // prints true
         System.out.println( b1.equals(b2) );  // prints true
         System.out.println( b1.equals(b3) );  // prints false
         System.out.println( b1.equals(null) ); // prints false
-        // System.out.println( b1.equals(“Some String”) ); // prints false
-        System.out.println( b4.equals(b1) ); // prints false
-
-
-
-        System.out.println("Bank Account 1: ");
-        System.out.println("id: " + myBank.accountNum);
-        System.out.println("Checking: " + myBank.checking);
-        System.out.println("Saving: " + myBank.saving);
-        myBank.deposit(1, 99999);
-        myBank.withdraw(1, 1000);
-        myBank.withdraw(2, 100000);
-        System.out.println("The total in your account is: " + myBank.totalInAccount());
-
-        System.out.println(BA.numAccounts);
-        System.out.println("Total in all accounts is: " + BA.total);
-        
+        System.out.println( b1.equals("Some String")); //prints false
+        System.out.println( b4.equals(b1) ); // prints false        
     
+        ht.put(b1,"Some Data");
+        //This is how you add to hashtables.
+        String string = (String) ht.get(b2);
+        System.out.println( string.equals("Some Data") );  // prints true
+
     }
 }
