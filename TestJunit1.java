@@ -16,9 +16,9 @@ public class TestJunit1 {
 
         assertEquals("B1 does not equals B1!?!?", b1, b1);
         assertEquals("B1 does not equals B2", b1, b2);
-        assertNotEquals("B1 equals b3???????", b1, b3);
+        assertEquals("B1 equals b3???????", b1, b3);
 
-        assertNotEquals("B1 equals b4?????", b4, b1);
+        assertEquals("B1 equals b4?????", b4, b1);
 
         
         // System.out.println( b1.equals(null) ); // prints false
